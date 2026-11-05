@@ -12,6 +12,10 @@
 #define GAS_PIN A0
 #define MICS_POWER_PIN 4      // EN-Pin (bei dir fest an 5V, Pin bleibt unbenutzt)
 #define CALIBRATION_TIME 3    // Aufwärmzeit in Minuten
+#define GAS_MITTELWERT_ANZAHL 16
+
+// Messintervall (MH-Z19C liefert ca. 1 Wert pro Sekunde)
+const unsigned long MESSINTERVALL = 1000UL;
 
 float no2 = 0;                // MiCS-5524 kann kein NO2 messen
 float nh3 = 0;
@@ -38,7 +42,7 @@ void setup() {
     while (1); // Programm anhalten
   }
 
-  // 3. Initialisiere MiCS-5524 und warte auf Aufwärmzeit (keine Ausgabe, damit das CSV sauber bleibt)
+  // 3. Initialisiere MiCS-5524 und warte auf Aufwärmzeit (keine Ausgabe)
   mics.begin();
   if (mics.getPowerState() == SLEEP_MODE) {
     mics.wakeUpMode();
@@ -51,8 +55,8 @@ void setup() {
 }
  
 void loop() {
-  // Alle 5 Sekunden (5000 ms) Daten auslesen
-  if (millis() - measurementTimer >= 5000) {
+  // Jede Sekunde Daten auslesen
+  if (millis() - measurementTimer >= MESSINTERVALL) {
    
     // Daten vom MH-Z19C holen
     int co2 = myMHZ19.getCO2();
@@ -62,8 +66,13 @@ void loop() {
     float humidity = bme.readHumidity();
     float pressure = bme.readPressure() / 100.0F; 
 
-    // Rohwert vom MiCS-5524 (0-1023)
-    int gas = analogRead(GAS_PIN);
+    // Rohwert vom MiCS-5524: Mittelwert aus mehreren Messungen (weniger Rauschen)
+    long summe = 0;
+    for (int i = 0; i < GAS_MITTELWERT_ANZAHL; i++) {
+      summe += analogRead(GAS_PIN);
+      delay(2);
+    }
+    int gas = (int)(summe / GAS_MITTELWERT_ANZAHL);
 
     // Geschätzte Werte aus der Datenblatt-Kurve (ppm)
     co  = mics.getGasData(CO);
