@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Umweltmonitor</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='js/chart.min.js') }}"
+        defer
+    ></script>
+
+    <script
+        src="{{ url_for('static', filename='js/dashboard.js') }}"
+        defer
+    ></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Umweltmonitor</h1>
+
+            <p class="subtitle">
+                Letzte Aktualisierung:
+                <span id="last-update">Lädt...</span>
+            </p>
+
+            <p class="subtitle">
+                Datenbankstatus:
+                <span id="connection-status">Verbinde...</span>
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls-bar" aria-label="Dashboard-Steuerung">
+            <div class="control-group">
+                <label for="timeframe">Zeitraum:</label>
+
+                <select id="timeframe" name="timeframe">
+                    <option value="1">1 Stunde</option>
+                    <option value="24" selected>24 Stunden</option>
+                    <option value="168">7 Tage</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn-export" id="export-button">
+                CSV herunterladen
+            </button>
+        </section>
+
+        <section class="kacheln-grid" aria-label="Aktuelle Umweltmesswerte">
+            <article class="kachel" id="kachel-temp">
+                <h2>Temperatur</h2>
+                <div class="wert">
+                    <span id="val-temp">--</span>
+                    <span aria-hidden="true">°C</span>
+                </div>
+                <div class="status-text" id="st-temp">Prüfe...</div>
+            </article>
+
+            <article class="kachel" id="kachel-hum">
+                <h2>Rel. Luftfeuchte</h2>
+                <div class="wert">
+                    <span id="val-hum">--</span>
+                    <span aria-hidden="true">% rF</span>
+                </div>
+                <div class="status-text" id="st-hum">Prüfe...</div>
+            </article>
+
+            <article class="kachel" id="kachel-press">
+                <h2>Luftdruck</h2>
+                <div class="wert">
+                    <span id="val-press">--</span>
+                    <span aria-hidden="true">hPa</span>
+                </div>
+                <div class="status-text" id="st-press">Prüfe...</div>
+            </article>
+
+            <article class="kachel" id="kachel-co2">
+                <h2>CO₂-Konzentration</h2>
+                <div class="wert">
+                    <span id="val-co2">--</span>
+                    <span aria-hidden="true">ppm</span>
+                </div>
+                <div class="status-text" id="st-co2">Prüfe...</div>
+            </article>
+        </section>
+
+        <section class="stats-box" aria-labelledby="stats-heading">
+            <h2 id="stats-heading">
+                Statistik (<span id="stats-label">24h</span>)
+            </h2>
+
+            <div class="stats-grid">
+                <div>
+                    <strong>Temperatur Min/Max/Ø:</strong>
+                    <span id="st-t-min">--</span> /
+                    <span id="st-t-max">--</span> /
+                    <span id="st-t-avg">--</span> °C
+                </div>
+
+                <div>
+                    <strong>CO₂ Min/Max/Ø:</strong>
+                    <span id="st-c-min">--</span> /
+                    <span id="st-c-max">--</span> /
+                    <span id="st-c-avg">--</span> ppm
+                </div>
+            </div>
+        </section>
+
+        <section class="charts-grid" aria-label="Messwertdiagramme">
+            <div class="chart-box">
+                <canvas
+                    id="chartTemp"
+                    aria-label="Temperaturverlauf"
+                    role="img"
+                ></canvas>
+            </div>
+
+            <div class="chart-box">
+                <canvas
+                    id="chartHum"
+                    aria-label="Luftfeuchteverlauf"
+                    role="img"
+                ></canvas>
+            </div>
+
+            <div class="chart-box">
+                <canvas
+                    id="chartPress"
+                    aria-label="Luftdruckverlauf"
+                    role="img"
+                ></canvas>
+            </div>
+
+            <div class="chart-box">
+                <canvas
+                    id="chartCO2"
+                    aria-label="CO₂-Verlauf"
+                    role="img"
+                ></canvas>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

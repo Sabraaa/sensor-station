@@ -1,0 +1,209 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+		sans-serif;
+}
+
+/* Dark Mode Basis */
+body {
+	background-color: #121212;
+	color: #e0e0e0;
+	padding: 15px;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+header h1 {
+	font-size: 1.8rem;
+	color: #ffffff;
+}
+
+.subtitle {
+	color: #a0a0a0;
+	font-size: 0.9rem;
+	margin-top: 5px;
+}
+
+/* Steuerelemente Dark Style */
+.controls-bar {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	background: #1e1e1e;
+	padding: 15px;
+	border-radius: 12px;
+	margin-bottom: 20px;
+	border: 1px solid #2d2d2d;
+}
+
+.control-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+select {
+	padding: 8px 12px;
+	border-radius: 6px;
+	border: 1px solid #444;
+	background-color: #2a2a2a;
+	color: #fff;
+	font-size: 0.9rem;
+}
+
+.btn-export {
+	background-color: #0d6efd;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 6px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.btn-export:hover {
+	background-color: #0b5ed7;
+}
+
+/* Responsive Grid für Kacheln (K11) */
+.kacheln-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
+	gap: 15px;
+	margin-bottom: 25px;
+}
+
+/* Kacheln Grunddesign */
+.kachel {
+	background: #1e1e1e;
+	padding: 20px;
+	border-radius: 12px;
+	text-align: center;
+	border: 2px solid transparent;
+	transition:
+		background-color 0.4s ease,
+		border-color 0.4s ease;
+}
+
+.kachel h3 {
+	font-size: 0.85rem;
+	color: #a0a0a0;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 8px;
+}
+
+.kachel .wert {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.kachel .status-text {
+	font-size: 0.8rem;
+	margin-top: 6px;
+	font-weight: 600;
+}
+
+/* Dynamische Ampelfarben für Kacheln */
+.kachel.status-green {
+	background-color: #1b382b;
+	border-color: #2ecc71;
+}
+.kachel.status-green .status-text {
+	color: #2ecc71;
+}
+
+.kachel.status-orange {
+	background-color: #3d2d11;
+	border-color: #f39c12;
+}
+.kachel.status-orange .status-text {
+	color: #f39c12;
+}
+
+.kachel.status-red {
+	background-color: #3a1c1c;
+	border-color: #e74c3c;
+}
+.kachel.status-red .status-text {
+	color: #e74c3c;
+}
+
+/* Statistik-Box */
+.stats-box {
+	background: #1e1e1e;
+	padding: 18px;
+	border-radius: 12px;
+	margin-bottom: 25px;
+	border: 1px solid #2d2d2d;
+}
+
+.stats-box h2 {
+	font-size: 1.1rem;
+	margin-bottom: 12px;
+	color: #ffffff;
+}
+
+.stats-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 0.95rem;
+	color: #ccc;
+}
+
+/* Charts Grid */
+.charts-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
+	gap: 20px;
+}
+
+.chart-box {
+	background: #1e1e1e;
+	padding: 15px;
+	border-radius: 12px;
+	height: 280px;
+	border: 1px solid #2d2d2d;
+}
+
+/* Media Queries (Desktop & Tablet) */
+@media (min-width: 600px) {
+	.controls-bar {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.kacheln-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.charts-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.stats-grid {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+}
+
+@media (min-width: 900px) {
+	.kacheln-grid {
+		grid-template-columns: repeat(4, 1fr); /* 4 Kacheln in einer Reihe */
+	}
+}
