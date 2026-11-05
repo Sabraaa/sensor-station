@@ -3,3 +3,4 @@ config.json
 umwelttmonitor.code-workspace
 *.log
 .idea/
+target/
