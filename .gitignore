@@ -1,4 +1,5 @@
 .venv/
-.gitignore
 config.json
 umwelttmonitor.code-workspace
+*.log
+.idea/

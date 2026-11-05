@@ -1,0 +1,53 @@
+# Automatically detect text files
+* text=auto
+
+# Line endings (LF)
+*.rs           text eol=lf
+*.toml         text eol=lf
+*.lock         text eol=lf
+*.sql          text eol=lf
+*.yaml         text eol=lf
+*.yml          text eol=lf
+*.json         text eol=lf
+*.sh           text eol=lf
+*.env.example  text eol=lf
+
+# Docker
+Dockerfile     text eol=lf
+*.Dockerfile   text eol=lf
+.dockerignore  text eol=lf
+
+# Documentation
+*.md           text eol=lf
+*.txt          text eol=lf
+
+# Windows scripts
+*.bat          text eol=crlf
+*.cmd          text eol=crlf
+
+# Images
+*.png          binary
+*.jpg          binary
+*.jpeg         binary
+*.gif          binary
+*.webp         binary
+*.ico          binary
+*.svg          text eol=lf
+
+# Documents and archives
+*.pdf          binary
+*.zip          binary
+*.tar          binary
+*.gz           binary
+*.7z           binary
+
+# Compiled files
+*.exe          binary
+*.dll          binary
+*.so           binary
+*.a            binary
+
+# Database files
+*.db           binary
+*.sqlite       binary
+*.sqlite3      binary
