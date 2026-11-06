@@ -1,209 +1,233 @@
+/* ==========================================
+   1. GLOBALER RESET & BASIS-STYLING
+   ========================================== */
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family:
-		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-		sans-serif;
+    box-sizing: border-box; /* Berücksichtigt Padding und Border in der Elementgröße */
+    margin: 0;              /* Setzt äußere Abstände zurück */
+    padding: 0;             /* Setzt innere Abstände zurück */
+    font-family:            /* Universelle System-Schriftarten für performantes Rendering */
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
 }
 
-/* Dark Mode Basis */
+/* Dark Mode Basis-Layout */
 body {
-	background-color: #121212;
-	color: #e0e0e0;
-	padding: 15px;
+    background-color: #121212; /* Sehr dunkler Hintergrund für den Dark Mode */
+    color: #e0e0e0;            /* Helles Grau für eine augenschonende Schrift */
+    padding: 15px;             /* Allgemeiner Innenabstand des Viewports */
 }
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
+    max-width: 1200px;         /* Begrenzt die maximale Breite auf großen Bildschirmen */
+    margin: 0 auto;            /* Zentriert den Container horizontal */
 }
 
+/* ==========================================
+   2. HEADER & TYPOGRAFIE
+   ========================================== */
 header {
-	text-align: center;
-	margin-bottom: 25px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 header h1 {
-	font-size: 1.8rem;
-	color: #ffffff;
+    font-size: 1.8rem;
+    color: #ffffff;            /* Reines Weiß für Hauptüberschriften */
 }
 
 .subtitle {
-	color: #a0a0a0;
-	font-size: 0.9rem;
-	margin-top: 5px;
+    color: #a0a0a0;            /* Gedimmtes Grau für Untertitel */
+    font-size: 0.9rem;
+    margin-top: 5px;
 }
 
-/* Steuerelemente Dark Style */
+/* ==========================================
+   3. STEUERELEMENTE (CONTROLS-BAR)
+   ========================================== */
 .controls-bar {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	background: #1e1e1e;
-	padding: 15px;
-	border-radius: 12px;
-	margin-bottom: 20px;
-	border: 1px solid #2d2d2d;
+    display: flex;
+    flex-direction: column;    /* Standardmäßig untereinander (Mobile First) */
+    gap: 12px;
+    background: #1e1e1e;       /* Dunkles Karten-Design */
+    padding: 15px;
+    border-radius: 12px;       /* Moderne, abgerundete Ecken */
+    margin-bottom: 20px;
+    border: 1px solid #2d2d2d; /* Dezenter Rahmen */
 }
 
 .control-group {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 select {
-	padding: 8px 12px;
-	border-radius: 6px;
-	border: 1px solid #444;
-	background-color: #2a2a2a;
-	color: #fff;
-	font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 0.9rem;
 }
 
 .btn-export {
-	background-color: #0d6efd;
-	color: white;
-	border: none;
-	padding: 10px;
-	border-radius: 6px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: background-color 0.2s;
+    background-color: #0d6efd; /* Klassisches Blau für Aktionen */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s; /* Sanfter Übergang beim Hover */
 }
 
 .btn-export:hover {
-	background-color: #0b5ed7;
+    background-color: #0b5ed7; /* Etwas dunkleres Blau beim Hover */
 }
 
-/* Responsive Grid für Kacheln (K11) */
+/* ==========================================
+   4. KACHELN-GRID (DASHBOARD-KARTEN)
+   ========================================== */
 .kacheln-grid {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
-	gap: 15px;
-	margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 /* Kacheln Grunddesign */
 .kachel {
-	background: #1e1e1e;
-	padding: 20px;
-	border-radius: 12px;
-	text-align: center;
-	border: 2px solid transparent;
-	transition:
-		background-color 0.4s ease,
-		border-color 0.4s ease;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid transparent; /* Platzhalter für Status-Rahmen */
+    transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease;    /* Sanfter Farbwechsel bei Statusänderungen */
 }
 
 .kachel h3 {
-	font-size: 0.85rem;
-	color: #a0a0a0;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
 
 .kachel .wert {
-	font-size: 1.8rem;
-	font-weight: bold;
-	color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .kachel .status-text {
-	font-size: 0.8rem;
-	margin-top: 6px;
-	font-weight: 600;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 600;
 }
 
-/* Dynamische Ampelfarben für Kacheln */
+/* ==========================================
+   5. DYNAMISCHE AMPELFARBEN (STATUS)
+   ========================================== */
+/* Grün: Alles im grünen Bereich */
 .kachel.status-green {
-	background-color: #1b382b;
-	border-color: #2ecc71;
+    background-color: #1b382b;
+    border-color: #2ecc71;
 }
 .kachel.status-green .status-text {
-	color: #2ecc71;
+    color: #2ecc71;
 }
 
+/* Orange: Warnung / Mittlerer Status */
 .kachel.status-orange {
-	background-color: #3d2d11;
-	border-color: #f39c12;
+    background-color: #3d2d11;
+    border-color: #f39c12;
 }
 .kachel.status-orange .status-text {
-	color: #f39c12;
+    color: #f39c12;
 }
 
+/* Rot: Kritischer Zustand / Alarm */
 .kachel.status-red {
-	background-color: #3a1c1c;
-	border-color: #e74c3c;
+    background-color: #3a1c1c;
+    border-color: #e74c3c;
 }
 .kachel.status-red .status-text {
-	color: #e74c3c;
+    color: #e74c3c;
 }
 
-/* Statistik-Box */
+/* ==========================================
+   6. STATISTIK-BOX
+   ========================================== */
 .stats-box {
-	background: #1e1e1e;
-	padding: 18px;
-	border-radius: 12px;
-	margin-bottom: 25px;
-	border: 1px solid #2d2d2d;
+    background: #1e1e1e;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #2d2d2d;
 }
 
 .stats-box h2 {
-	font-size: 1.1rem;
-	margin-bottom: 12px;
-	color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #ffffff;
 }
 
 .stats-grid {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	font-size: 0.95rem;
-	color: #ccc;
+    display: flex;
+    flex-direction: column; /* Mobile: Elemente untereinander */
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #ccc;
 }
 
-/* Charts Grid */
+/* ==========================================
+   7. CHARTS-GRID
+   ========================================== */
 .charts-grid {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
-	gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Spalte */
+    gap: 20px;
 }
 
 .chart-box {
-	background: #1e1e1e;
-	padding: 15px;
-	border-radius: 12px;
-	height: 280px;
-	border: 1px solid #2d2d2d;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 12px;
+    height: 280px;             /* Feste Höhe für Diagramm-Container */
+    border: 1px solid #2d2d2d;
 }
 
-/* Media Queries (Desktop & Tablet) */
+/* ==========================================
+   8. MEDIA QUERIES (RESPONSIVES DESIGN)
+   ========================================== */
+
+/* Ab Tablet-Größe (min. 600px) */
 @media (min-width: 600px) {
-	.controls-bar {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
+    .controls-bar {
+        flex-direction: row;     /* Steuerelemente nebeneinander anordnen */
+        justify-content: space-between;
+        align-items: center;
+    }
 
-	.kacheln-grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
+    .kacheln-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Spalten für Kacheln */
+    }
 
-	.charts-grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Spalten für Diagramme */
+    }
 
-	.stats-grid {
-		flex-direction: row;
-		justify-content: space-around;
-	}
+    .stats-grid {
+        flex-direction: row;     /* Statistik-Inhalte nebeneinander */
+        justify-content: space-around;
+    }
 }
 
+/* Ab Desktop-Größe (min. 900px) */
 @media (min-width: 900px) {
-	.kacheln-grid {
-		grid-template-columns: repeat(4, 1fr); /* 4 Kacheln in einer Reihe */
-	}
+    .kacheln-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 Kacheln in einer Reihe */
+    }
 }
