@@ -15,7 +15,7 @@
 #define GAS_MITTELWERT_ANZAHL 16
 
 // Messintervall (MH-Z19C liefert ca. 1 Wert pro Sekunde)
-const unsigned long MESSINTERVALL = 1000UL;
+const unsigned long MESSINTERVALL = 15000UL;
 
 float no2 = 0;                // MiCS-5524 kann kein NO2 messen
 float nh3 = 0;
@@ -86,5 +86,5 @@ void loop() {
     Serial.println(csv); // z.B. "650;23.2;45.4;1021.1;312;0.0;1.2;3.4"
  
     measurementTimer = millis(); 
-  }
+  }   
 }
