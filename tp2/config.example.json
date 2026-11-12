@@ -1,0 +1,21 @@
+{
+  "hostname": "127.0.0.1",
+  "db_port": 3306,
+  "db_name": "umwelt_db",
+  "db_writeonly_user": "umwelt_writer",
+  "db_writeonly_password": "REPLACE_LOCALLY",
+  "serial": {
+    "port": "/dev/ttyUSB0",
+    "baud_rate": 9600,
+    "reconnect_seconds": 2
+  },
+  "limits": {
+    "temperature": [0.0, 50.0],
+    "humidity": [5.0, 95.0],
+    "pressure": [900.0, 1100.0],
+    "co2": [400.0, 5000.0],
+    "gas_raw": [1.0, 1022.0]
+  },
+  "log_file": "var/tp2.log",
+  "failure_file": "var/failed-measurements.jsonl"
+}

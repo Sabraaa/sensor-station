@@ -4,3 +4,5 @@ umwelttmonitor.code-workspace
 *.log
 .idea/
 target/
+/var/
+/tp2/var/

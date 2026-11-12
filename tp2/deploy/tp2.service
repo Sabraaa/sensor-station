@@ -1,0 +1,23 @@
+[Unit]
+Description=TP2 environmental measurement collector
+After=mariadb.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=umweltmonitor
+SupplementaryGroups=dialout
+WorkingDirectory=/opt/sensor-station
+Environment=TZ=Europe/Berlin
+ExecStart=/usr/local/bin/umweltmonitor-tp2 collect --config /opt/sensor-station/config.json
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/sensor-station/var
+
+[Install]
+WantedBy=multi-user.target
